@@ -109,7 +109,7 @@ def main():
                 #pushed the correct buttons
                 flashButtonAnimation(clickedButton)
                 currentStep += 1
-            lastClickTime = time.time() # try moving this, to get countdown timer working
+                lastClickTime = time.time() 
 
                 if currentStep == len(pattern):
                     # pushed the last button in the pattern
@@ -118,16 +118,16 @@ def main():
                     waitingForInput = False
                     currentStep = 0 # reset back to first step
 
-            elif (clickedButton and clickedButton != pattern[currentStep]) or (currentStep != 0 and time.time() - TIMEOUT > lastClickTime):
-                # pushed the incorrect button or timed out
-                gameOverAnimation()
-                # reset for new game
-                pattern = []
-                currentStep = 0
-                waitingForInput = False
-                score = 0
-                pygame.time.wait(1000)
-                changeBackgroundAnimation()
+                elif (clickedButton and clickedButton != pattern[currentStep]) or (currentStep != 0 and time.time() - TIMEOUT > lastClickTime):
+                    # pushed the incorrect button or timed out
+                    gameOverAnimation()
+                    # reset for new game
+                    pattern = []
+                    currentStep = 0
+                    waitingForInput = False
+                    score = 0
+                    pygame.time.wait(1000)
+                    changeBackgroundAnimation()
 
         pygame.display.update()
         FPSCLOCK.tick(FPS)
