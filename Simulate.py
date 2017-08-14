@@ -39,7 +39,7 @@ REDRECT = pygame.Rect(XMARGIN, YMARGIN + BUTTONSIZE + BUTTONGAPSIZE, BUTTONSIZE,
 GREENRECT = pygame.Rect(XMARGIN + BUTTONSIZE + BUTTONGAPSIZE, YMARGIN + BUTTONSIZE + BUTTONGAPSIZE, BUTTONSIZE, BUTTONSIZE)
 
 def main():
-    global FPSCLOCK, DISPLAYSURF, BASICFONT, BEEP1, BEEP2, BEEP3, BEEP4
+    global FPSCLOCK, DISPLAYSURF, BASICFONT, BEEP1, BEEP2, BEEP3, BEEP4, TIMEOUT
 
     pygame.init()
     FPSCLOCK = pygame.time.Clock()
@@ -118,16 +118,16 @@ def main():
                     waitingForInput = False
                     currentStep = 0 # reset back to first step
 
-                elif (clickedButton and clickedButton != pattern[currentStep]) or (currentStep != 0 and time.time() - TIMEOUT > lastClickTime):
-                    # pushed the incorrect button or timed out
-                    gameOverAnimation()
-                    # reset for new game
-                    pattern = []
-                    currentStep = 0
-                    waitingForInput = False
-                    score = 0
-                    pygame.time.wait(1000)
-                    changeBackgroundAnimation()
+            elif (clickedButton and clickedButton != pattern[currentStep]) or (currentStep != 0 and time.time() - TIMEOUT > lastClickTime):
+                # pushed the incorrect button or timed out
+                gameOverAnimation()
+                # reset for new game
+                pattern = []
+                currentStep = 0
+                waitingForInput = False
+                score = 0
+                pygame.time.wait(1000)
+                changeBackgroundAnimation()
 
         pygame.display.update()
         FPSCLOCK.tick(FPS)
