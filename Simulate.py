@@ -109,7 +109,7 @@ def main():
                 #pushed the correct buttons
                 flashButtonAnimation(clickedButton)
                 currentStep += 1
-                lastClickTime = time.time()
+            lastClickTime = time.time() # try moving this, to get countdown timer working
 
                 if currentStep == len(pattern):
                     # pushed the last button in the pattern
